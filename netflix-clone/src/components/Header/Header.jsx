@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
-// import React, { useState } from "react";
-import  NetflixLogo  from "../../assets/images/NetflixLogo.png";
+import NetflixLogo from "../../assets/images/NetflixLogo.png";
 
 function Header() {
+  // State for handling sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Toggle the sidebar open/close
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prevState) => !prevState);
+  };
+
   return (
     <div className="header_outer_container">
       <div className="header_container">
@@ -51,16 +58,16 @@ function Header() {
         </div>
 
         {/* Hamburger Menu for mobile */}
-        {/* <div className="hamburger-menu" onClick={toggleSidebar}>
+        <div className="hamburger-menu" onClick={toggleSidebar}>
           <ion-icon
             name={isSidebarOpen ? "close-outline" : "menu-outline"}
           ></ion-icon>
-        </div> */}
+        </div>
       </div>
 
       {/* Sidebar */}
-      {/* {isSidebarOpen && ( */}
-        {/* <div className="sidebar">
+      {isSidebarOpen && (
+        <div className="sidebar">
           <ul>
             <li>Home</li>
             <li>TV Shows</li>
@@ -69,8 +76,8 @@ function Header() {
             <li>My List</li>
             <li>Browse by Language</li>
           </ul>
-        </div> */}
-      {/* )} */}
+        </div>
+      )}
     </div>
   );
 }
